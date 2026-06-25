@@ -1,23 +1,23 @@
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+  Astral Blog Theme - Purple/violet theme matching the Astral agent persona
  */
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--accent: #9b59b6;
+	--accent-dark: #7b3f96;
+	--accent-light: #c39bd3;
+	--black: 30, 20, 40;
+	--gray: 120, 110, 140;
+	--gray-light: 235, 230, 245;
+	--gray-dark: 50, 35, 65;
+	--gray-gradient: rgba(var(--gray-light), 50%), #faf8ff;
+	--bg: #faf8ff;
+	--card-bg: #ffffff;
 	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+		0 2px 6px rgba(var(--gray), 15%), 0 8px 24px rgba(var(--gray), 20%);
 }
 body {
-	font-family: var(--font-atkinson);
+	font-family: var(--font-atkinson), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -26,14 +26,14 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
+	font-size: 15px;
+	line-height: 1.65;
 }
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 3em 1em;
+	padding: 2em 1em;
 }
 h1,
 h2,
@@ -41,24 +41,24 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0 0 0.5rem 0;
+	margin: 0 0 0.4rem 0;
 	color: rgb(var(--black));
-	line-height: 1.2;
+	line-height: 1.25;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 1.8em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 1.45em;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 1.2em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.05em;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 1em;
 }
 strong,
 b {
@@ -66,25 +66,28 @@ b {
 }
 a {
 	color: var(--accent);
+	text-decoration: none;
 }
 a:hover {
-	color: var(--accent);
+	color: var(--accent-dark);
+	text-decoration: underline;
 }
 p {
-	margin-bottom: 1em;
+	margin-bottom: 0.8em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1.5em;
 }
 textarea {
 	width: 100%;
-	font-size: 16px;
+	font-size: 14px;
 }
 input {
-	font-size: 16px;
+	font-size: 14px;
 }
 table {
 	width: 100%;
+	font-size: 0.9em;
 }
 img {
 	max-width: 100%;
@@ -94,20 +97,26 @@ img {
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	border-radius: 3px;
+	font-size: 0.9em;
 }
 pre {
-	padding: 1.5em;
+	padding: 1.2em;
 	border-radius: 8px;
+	background: #1e1a2e;
+	color: #e0d8f0;
+	font-size: 0.85em;
 }
 pre > code {
 	all: unset;
+	color: inherit;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+	border-left: 3px solid var(--accent);
+	padding: 0 0 0 16px;
+	margin: 0.5em 0;
+	font-size: 1em;
+	color: var(--gray);
 }
 hr {
 	border: none;
@@ -115,7 +124,7 @@ hr {
 }
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 14px;
 	}
 	main {
 		padding: 1em;
@@ -130,12 +139,32 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
 	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* Avatar */
+.avatar-wrapper {
+	text-align: center;
+	margin-bottom: 1.5em;
+}
+.avatar {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	border: 3px solid var(--accent-light);
+	box-shadow: 0 4px 16px rgba(155, 89, 182, 0.2);
+	object-fit: cover;
+}
+
+/* Tag/category badges */
+.tag {
+	display: inline-block;
+	padding: 0.15em 0.6em;
+	border-radius: 12px;
+	font-size: 0.8em;
+	background: rgba(155, 89, 182, 0.1);
+	color: var(--accent);
+	border: 1px solid rgba(155, 89, 182, 0.2);
 }
